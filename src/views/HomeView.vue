@@ -7,11 +7,15 @@ import { RouterLink } from 'vue-router'
 const newsList = ref<News[]>([])
 
 onMounted(async () => {
-  const response = await cmsClient.get({
-    endpoint: 'news',
-  })
+  try {
+    const response = await cmsClient.get({
+      endpoint: 'news',
+    })
 
-  newsList.value = response.contents.reverse()
+    newsList.value = response.contents.reverse()
+  } catch (error) {
+    console.log(error)
+  }
 })
 </script>
 
