@@ -40,7 +40,6 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          GITHUB_PAGES: true
           VITE_MICROCMS_API_KEY: ${{ secrets.VITE_MICROCMS_API_KEY }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
