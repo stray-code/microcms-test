@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import type { News } from '@/types'
+import { cmsClient } from '@/utils'
 import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const newsList = ref<News[]>([])
 
 onMounted(async () => {
-  const response = await fetch('https://hke0ar7pmq.microcms.io/api/v1/news', {
-    headers: {
-      'X-MICROCMS-API-KEY': import.meta.env.VITE_MICROCMS_API_KEY,
-    },
+  const response = await cmsClient.get({
+    endpoint: 'news',
   })
 
-  if (response.ok) {
-    const data = await response.json()
-    newsList.value = data.contents.reverse()
-  }
+  newsList.value = response.contents.reverse()
 })
 </script>
 

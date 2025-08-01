@@ -1,2 +1,2 @@
-export * from "./Category"
-export * from "./News"
+export * from './Category'
+export * from './News'
