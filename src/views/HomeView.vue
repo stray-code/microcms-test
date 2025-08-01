@@ -21,11 +21,24 @@ onMounted(async () => {
 
 <template>
   <main>
-    <div v-for="news in newsList">
-      <h3>
-        <RouterLink :to="`news/${news.id}`">{{ news.title }}</RouterLink>
-      </h3>
-      <time>{{ new Date(news.publishedAt).toLocaleDateString() }}</time>
-    </div>
+    <section>
+      <h2 class="mb-3 text-xl">お知らせ</h2>
+      <div
+        v-for="news in newsList"
+        :key="news.id"
+        class="py-3 border-t border-gray-300 pb-4"
+      >
+        <time class="text-gray-500 text-sm">{{
+          new Date(news.publishedAt).toLocaleDateString()
+        }}</time>
+        <h3>
+          <RouterLink
+            :to="`news/${news.id}`"
+            class="text-blue-600 hover:underline"
+            >{{ news.title }}</RouterLink
+          >
+        </h3>
+      </div>
+    </section>
   </main>
 </template>

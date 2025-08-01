@@ -25,9 +25,15 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="news">
-    <h3>{{ news.title }}</h3>
-    <time>{{ new Date(news.publishedAt).toLocaleDateString() }}</time>
-    <p v-html="news.content"></p>
-  </div>
+  <main>
+    <div v-if="news">
+      <time class="text-gray-500 text-sm">{{
+        new Date(news.publishedAt).toLocaleDateString()
+      }}</time>
+      <h1 class="mb-3 pb-3 text-xl border-b border-gray-300">
+        {{ news.title }}
+      </h1>
+      <div v-html="news.content" class="prose lg:prose-xl"></div>
+    </div>
+  </main>
 </template>
