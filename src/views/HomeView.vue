@@ -66,7 +66,10 @@ watch(() => router.currentRoute.value.query, fetchNews)
       </div>
       <div v-if="isPending">loading...</div>
       <div v-else>
-        <NewsList :newsList="newsList"></NewsList>
+        <div v-if="newsList.length > 0">
+          <NewsList :newsList="newsList"></NewsList>
+        </div>
+        <div v-else>お知らせが見つかりませんでした</div>
       </div>
     </section>
   </main>
