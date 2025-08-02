@@ -8,5 +8,5 @@ export type News = {
   revisedAt: string
   title: string
   content: string
-  category: Category
+  category?: Category
 }
