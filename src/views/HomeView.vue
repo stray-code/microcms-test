@@ -18,10 +18,10 @@ const fetchNews = async () => {
   try {
     const response = await cmsClient.get({
       endpoint: 'news',
-      queries: { filters: category },
+      queries: { orders: '-publishedAt', filters: category },
     })
 
-    newsList.value = response.contents.reverse()
+    newsList.value = response.contents
   } catch (error) {
     console.log(error)
   }
